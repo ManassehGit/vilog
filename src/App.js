@@ -1,15 +1,20 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from '../components/home/home';
+import HostLogin from '../components/auths/hostLogin';
+import VisitorLogin from '../components/auths/visitorLogin';
+import HostPage from '../components/host/hostPage';
+import Dashboard from '../components/dashboard/dashboard';
 
 function App() {
   return (
     <Router>
     <Routes>
-      <Route path="/" element={<AuthForm />}/>
-      <Route path="loginSignup" element={<AuthForm />} />
-      <Route path="host" element={<AuthForm />} />
-      <Route path="dashbord" element={<AuthForm />} />
-      <Route path="login" element={<AuthForm />} />
+      <Route path="/" element={<Home />}/>
+      <Route path="login" element={<HostLogin />} />
+      <Route path="loginSignup" element={<VisitorLogin />} />
+      <Route path="host" element={<HostPage />} />
+      <Route path="dashbord" element={<Dashboard />} />
       
     </Routes>
   </Router>
