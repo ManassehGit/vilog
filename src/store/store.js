@@ -1,7 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
+import host from './hostSlice';
+import visitors from './visitorSlice';
+
 
 const rootReducer = {
-    visitor: visitor.reducer,
+    visitor: visitors.reducer,
     host: host.reducer
   }
   
