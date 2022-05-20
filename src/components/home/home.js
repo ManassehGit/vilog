@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react';
+import './home.css';
+import NavButton from '../navButton/navButton';
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <img src='viLog.png' alt='ViLog Logo' />
+      <div>
+      <NavButton role="login"/>
+      <NavButton role="loginSignup"/>
+      </div>
+    </div>
   )
 }
 
