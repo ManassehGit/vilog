@@ -7,8 +7,8 @@ const visitors = createSlice({
     },
     reducers: {
         addVisitor  (state, action) {
-            const {email, time, isLoggedIn} = action.payload
-            state.push({email, time, isLoggedIn})
+            const {email, timeIn, isLoggedIn} = action.payload
+            state.push({email: email, timeIn: timeIn, isLoggedIn: isLoggedIn, timeOut: null})
         },
         logoutVisitor (state, action) {
             const {email} = action.payload
