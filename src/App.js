@@ -1,10 +1,10 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from '../components/home/home';
-import HostLogin from '../components/auths/hostLogin';
-import VisitorLogin from '../components/auths/visitorLogin';
-import HostPage from '../components/host/hostPage';
-import Dashboard from '../components/dashboard/dashboard';
+import Home from './components/home/home';
+import HostLogin from './components/auths/hostLogin';
+import VisitorLogin from './components/auths/visitorLogin';
+import HostPage from './components/host/hostPage';
+import Dashboard from './components/dashboard/dashboard';
 
 function App() {
   return (
