@@ -1,11 +1,12 @@
 import React from 'react';
 import './home.css';
 import NavButton from '../navButton/navButton';
+import Logo from '../logo/logo';
 
 const Home = () => {
   return (
     <div>
-      <img src='viLog.png' alt='ViLog Logo' />
+      <Logo />
       <div>
       <NavButton role="login"/>
       <NavButton role="loginSignup"/>
