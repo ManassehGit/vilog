@@ -1,9 +1,15 @@
-import React, {useState} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import React, {useEffect, useState} from 'react'
+import {useSelector} from 'react-redux'
 
 const ListVisitors = () => {
-    let visitors = useSelector(state => state.visitors.visitorEmails);
+
+  let visitors = useSelector(state => state.visitors.visitorEmails);
+  
+  
+  useEffect(() => {
     console.log(visitors)
+  }, [visitors])
+    
 
   return (
     <div>
