@@ -40,19 +40,20 @@ import swal from 'sweetalert';
         generateQR(input);
         console.log("datum",data)
     
-        let public_key = "eNDvYA3W7CSZFspDG";
+        // let public_key = "eNDvYA3W7CSZFspDG";
     
-        emailjs.send('qr_code', 'qr_login', {to_name: username, message: data}, public_key)
-          .then((result) => {
-              console.log(result.text);
-          }, (error) => {
-              console.log(error.text);
-          });
+        // emailjs.send('qr_code', 'qr_login', {to_name: username, message: data}, public_key)
+        //   .then((result) => {
+        //       console.log(result.text);
+        //   }, (error) => {
+        //       console.log(error.text);
+        //   });
+        
 
           document.querySelector("#registerEmail").value = "";
           
           swal({
-            title: "Successfully Registered",
+            title: "Successfully Sent Mail",
             text: "Kindly check mail for the QR code",
             icon: "success",
             button: "Ok",
