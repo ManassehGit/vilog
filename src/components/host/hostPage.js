@@ -1,8 +1,15 @@
 import React from 'react'
+import DashNavSide from '../dashboard/dashNavSide'
+import HostDashContent from './hostDashContent'
 
 const HostPage = () => {
   return (
-    <div>HostPage</div>
+    <>
+    <DashNavSide>
+      <HostDashContent />
+    </DashNavSide>
+    </>
+      
   )
 }
 
