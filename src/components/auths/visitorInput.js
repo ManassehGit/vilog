@@ -7,8 +7,8 @@ import RegisterForQR from './registerForQR'
 const VisitorInput = ({choice}) => {
   return (
     <div>
-      { choice === "email" && <EmailUsernameField text="Email"/> }
-      { choice === "username" && <EmailUsernameField text="Username"/> }
+      { choice === "email" && <EmailUsernameField text="Email" choice={choice} /> }
+      { choice === "username" && <EmailUsernameField text="Username" choice={choice} /> }
       { choice === "register" && <RegisterForQR /> }
       { choice === "qrcode" && <EmailUsernameField /> }
     </div>
