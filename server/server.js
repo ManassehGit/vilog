@@ -8,12 +8,25 @@ const app = express();
 
 
 const bodyParser = require('body-parser')
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//   extended: true
+// }));
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
+// parse application/json
+app.use(bodyParser.json())
+
+// app.use(
+//     express.urlencoded({
+//       extended: true
+//     })
+//   )
+  
+//   app.use(express.json())
+  
 
 
 let port = process.env.PORT || 3001;
@@ -48,13 +61,13 @@ app.get('/users', async (req, res, next) => {
 app.post('/addUser', async (req, res, next) => {
     try{
         console.log(req.body)
-        // const {firstname, password, department} = req.body;
-        const result = await pool.query(`INSERT INTO Users(username, user_password, department) VALUES('Ken', 'programmer', 'IT') RETURNING *`)
+        const {firstname, password, department} = req.body;
+        const result = await pool.query(`INSERT INTO Users(username, user_password, department) VALUES(${firstname}, ${password},${department}) RETURNING *`)
         // else{
         //     // console.log(res);
         //     // res.send(res);
         // }
-        res.json(result);
+        return res.json(result);
     
     }catch(err){
         console.log("Sorry error",err.message);
