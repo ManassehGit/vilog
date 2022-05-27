@@ -5,13 +5,20 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import swal from 'sweetalert2';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import { logoutVisitor } from '../../store/visitorSlice';
+import date from 'date-and-time'
 
 const SignOutCard = ({username, loginTime, loginMethod}) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    let now = new Date();
+    let time = date.format(now, "HH:mm:ss");
 
     const handleClick = () => {
-        console.log("hello there")
+        dispatch(logoutVisitor({email: username, time: time}));
         swal.fire({
             icon: 'success',
             title: `${username} logged out`,
