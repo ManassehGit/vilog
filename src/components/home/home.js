@@ -10,7 +10,11 @@ const Home = () => {
       let visitors = useSelector(state => state.visitors.visitorEmails);
       console.log(visitors)
       const check = async () => {
-        let result = await axios.get("/users")
+        let result = await axios.post("/addUser", {
+          firstname: "Bernard",
+          password: "http",
+          department: "IT"
+        })
       let temp = await result.data;
       console.log(temp)
       }
