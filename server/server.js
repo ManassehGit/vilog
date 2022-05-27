@@ -1,26 +1,72 @@
 const express = require('express');
 const path = require('path');
+const {Pool} = require('pg');
 
 
+const uri = "postgres://eatpxpnqscoxqx:0765d0686bedc1718fc1298cb6162a48fee9e458fe1a89598d4f8a2062f8ff33@ec2-54-165-90-230.compute-1.amazonaws.com:5432/ddbhdm3cc7l5kg";
 const app = express();
+
+
+const bodyParser = require('body-parser')
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+
+
+
 let port = process.env.PORT || 3001;
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
-app.get('/users', (req, res, next) => {
-    res.status(201).json({msg: "Welcome to the serve page"})
+
+const pool = new Pool({
+ connectionString: uri,
+ ssl: {
+ rejectUnauthorized: false
+ }
+});
+
+
+app.get('/users', async (req, res, next) => {
+    res.status(201).json({msg: "Welcome to the serve page"});
+    const result = await pool.query(`SELECT * FROM Users;`, (err, res) => {
+        if (err) {
+            console.log("Error - Failed to select all from Users");
+            console.log(err);
+        }
+        else{
+            console.log(res.rows);
+            return res.rows
+        }
+    })
+    console.log(result)
+
 })
 
-app.post('/addUser', (req, res, next) => {
+app.post('/addUser', async (req, res, next) => {
+    try{
+        console.log(req.body)
+        // const {firstname, password, department} = req.body;
+        const result = await pool.query(`INSERT INTO Users(username, user_password, department) VALUES('Ken', 'programmer', 'IT') RETURNING *`)
+        // else{
+        //     // console.log(res);
+        //     // res.send(res);
+        // }
+        res.json(result);
     
+    }catch(err){
+        console.log("Sorry error",err.message);
+    }
 })
 
 app.delete('/deleteUser', (req, res, next) => {
-    
+    console.log(JSON.stringify(req.body))
 })
 
 app.put('/editUser', (req, res, next) => {
-    
+    console.log(JSON.stringify(req.body))
 })
 
 app.listen(port, () => {
