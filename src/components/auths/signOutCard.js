@@ -6,19 +6,37 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import swal from 'sweetalert2';
 import {useNavigate} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { logoutVisitor } from '../../store/visitorSlice';
-import date from 'date-and-time'
+import date from 'date-and-time';
+import { logVisitor } from '../../functions/functions';
 
 const SignOutCard = ({username, loginTime, loginMethod}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    
+    let visitorsInfo = useSelector(state => state.visitors.visitorList);
+    let visitorId = visitorsInfo.findIndex(visitor => visitor.email === username);
+
+    console.log("Visitor-----",visitorId, visitorsInfo)
+
     let now = new Date();
     let time = date.format(now, "HH:mm:ss");
 
     const handleClick = () => {
-        dispatch(logoutVisitor({email: username, time: time}));
+            dispatch(logoutVisitor({email: username, time: time}));
+            console.log(visitorId);
+
+            // if(visitorId !== -1){
+            //     const {dateCurrent, email, isLoggedIn, loginMethod, timeIn, timeOut} = visitorsInfo[visitorId];
+            //     console.log(dateCurrent, email, isLoggedIn, loginMethod, timeIn, timeOut);
+
+            //     logVisitor(email, dateCurrent, timeIn, timeOut, loginMethod);
+
+            // }
+            document.querySelector("#signoutEmail").value = "";
+
         swal.fire({
             icon: 'success',
             title: `${username} logged out`,
