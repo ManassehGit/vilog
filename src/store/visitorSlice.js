@@ -14,19 +14,23 @@ const visitors = createSlice({
     reducers: {
         addVisitor:  (state, action) => {
             const {email, dateCurrent, timeIn, isLoggedIn, loginMethod} = action.payload;
-            console.log(email, dateCurrent, timeIn)
+            console.log(email, dateCurrent, timeIn, loginMethod)
             state.visitorList.push({email: email, dateCurrent: dateCurrent, timeIn: timeIn, isLoggedIn: isLoggedIn, timeOut: null, loginMethod: loginMethod});
             console.log("visitors List", current(state))
-            for(let item in state){
-                console.log(item)
-            }
+            
             state.visitorEmails.push(email);
         },
         logoutVisitor: (state, action) => {
-            const {email} = action.payload
-            const visitorId = state.visitorList.findIndex(visitor => visitor.email === email)
-            if(visitorId){
-                state.isLoggedIn = false;
+            const {email, time} = action.payload;
+            console.log(email, time)
+            let visitorId = state.visitorList.findIndex(visitor => visitor.email === email);
+            console.log(visitorId);
+            if(visitorId !== -1){
+                state.visitorList[visitorId].isLoggedIn = false;
+                state.visitorList[visitorId].timeOut = time;
+
+                console.log("visitor slice-----",state.visitorList[visitorId]);
+
             }
         }
 
