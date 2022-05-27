@@ -58,6 +58,20 @@ app.get('/users', async (req, res, next) => {
 
 })
 
+app.get('/visitors', async (req, res, next) => {
+    const result = await pool.query(`SELECT * FROM Visitors;`, (err, res) => {
+        if (err) {
+            console.log("Error - Failed to select all from Users");
+            console.log(err);
+        }
+        else{
+            // console.log(res.rows);
+            return res.rows
+        }
+    })
+
+})
+
 app.post('/addUser', async (req, res, next) => {
     try{
         console.log(req.body)
@@ -74,10 +88,10 @@ app.post('/addUser', async (req, res, next) => {
 
 app.post('/addVisitor', async (req, res, next) => {
     try{
-        console.log(req.body)
+        console.log("Req bosy",req.body)
         const {username, dateCurrent, timeIn, timeOut, loginMethod} = req.body;
         
-        const result = await pool.query(`INSERT INTO visitors(username, date_current, time_in, time_out, login_method) VALUES('${username}', '${dateCurrent}', '${timeIn}', '${timeOut}', '${loginMethod}') RETURNING *;`)
+        const result = await pool.query(`INSERT INTO Visitors(username, date_current, time_in, time_out, login_method) VALUES('${username}', '${dateCurrent}', '${timeIn}', '${timeOut}', '${loginMethod}') RETURNING *;`)
         return res.json(result);
     
     }catch(err){
