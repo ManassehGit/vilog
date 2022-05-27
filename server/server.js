@@ -65,10 +65,19 @@ app.post('/addUser', async (req, res, next) => {
         // console.log("result", `INSERT INTO Users(username, user_password, department) VALUES('${firstname}', '${password}', '${department}') RETURNING *;`);
         const result = await pool.query(`INSERT INTO Users(username, user_password, department) VALUES('${firstname}', '${password}', '${department}') RETURNING *;`)
         
-        // else{
-        //     // console.log(res);
-        //     // res.send(res);
-        // }
+        return res.json(result);
+    
+    }catch(err){
+        console.log("Sorry error",err.message);
+    }
+})
+
+app.post('/addVisitor', async (req, res, next) => {
+    try{
+        console.log(req.body)
+        const {firstname, password, department} = req.body;
+        
+        const result = await pool.query(`INSERT INTO visitors(username, date_current, time_in, time_out, login_method) VALUES('${firstname}', '${password}', '${department}') RETURNING *;`)
         return res.json(result);
     
     }catch(err){
