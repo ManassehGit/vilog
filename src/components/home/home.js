@@ -2,8 +2,20 @@ import React from 'react';
 import './home.css';
 import NavButton from '../navButton/navButton';
 import Logo from '../logo/logo';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
+
+      let visitors = useSelector(state => state.visitors.visitorEmails);
+      console.log(visitors)
+      const check = async () => {
+        let result = await axios.get("/users")
+      let temp = await result.data;
+      console.log(temp)
+      }
+
+      check();
   return (
     <div>
       <Logo />
