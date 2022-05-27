@@ -1,14 +1,13 @@
 import React from 'react'
 import DashNavSide from '../dashboard/dashNavSide'
 import HostDashContent from './hostDashContent'
+import ListVisitors from './listVisitors'
 
 const HostPage = () => {
   return (
-    <>
-    <DashNavSide>
-      <HostDashContent />
-    </DashNavSide>
-    </>
+    <div>
+    <ListVisitors />
+    </div>
       
   )
 }
