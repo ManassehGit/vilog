@@ -4,8 +4,8 @@ import visitors from './visitorSlice';
 
 
 const rootReducer = {
-    visitor: visitors.reducer,
-    host: host.reducer
+    visitors: visitors.reducer,
+    hosts: host.reducer
   }
   
   
