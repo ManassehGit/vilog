@@ -75,9 +75,9 @@ app.post('/addUser', async (req, res, next) => {
 app.post('/addVisitor', async (req, res, next) => {
     try{
         console.log(req.body)
-        const {firstname, password, department} = req.body;
+        const {username, dateCurrent, timeIn, timeOut, loginMethod} = req.body;
         
-        const result = await pool.query(`INSERT INTO visitors(username, date_current, time_in, time_out, login_method) VALUES('${firstname}', '${password}', '${department}') RETURNING *;`)
+        const result = await pool.query(`INSERT INTO visitors(username, date_current, time_in, time_out, login_method) VALUES('${username}', '${dateCurrent}', '${timeIn}', '${timeOut}', '${loginMethod}') RETURNING *;`)
         return res.json(result);
     
     }catch(err){
