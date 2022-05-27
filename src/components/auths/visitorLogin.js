@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Logo from '../logo/logo'
 import VisitorInput from './visitorInput';
+import SignOutVisitor from './signOutVisitor';
 
 
 const VisitorLogin = () => {
@@ -70,10 +71,7 @@ const VisitorLogin = () => {
     </div>
     <div class="tab-pane fade" id="v-pills-signout" role="tabpanel" aria-labelledby="v-pills-signout-tab" tabindex="0">
     <div class="mb-3 row">
-          <label for="staticEmail" class="col-sm-8 col-form-label">Email/Username</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control" id="staticEmail" />
-          </div>
+          <SignOutVisitor />
         </div>
     </div>
     
