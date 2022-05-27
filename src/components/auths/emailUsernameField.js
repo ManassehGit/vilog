@@ -32,7 +32,7 @@ const EmailUsernameField = ({text}) => {
         <label for="staticEmail" class="col-sm-8 col-form-label mt-4">{text}</label>
           <div class="col-sm-10">
             <input type={typeVal} class="form-control" id="staticEmail" placeholder={`Kindly enter here ...`} onChange={handleText}/>
-            <button type="submit" class="btn btn-outline-primary mt-2g">Send</button>
+            <button type="submit" class="btn btn-outline-primary mt-2">Send</button>
           </div>
         </form>
     </div>
