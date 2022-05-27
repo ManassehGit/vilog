@@ -1,4 +1,5 @@
-import { createSlice, current } from "@reduxjs/toolkit"
+import { createSlice, current } from "@reduxjs/toolkit";
+import {logVisitor} from '../functions/functions';
 
 const visitors = createSlice({
     name: "visitors",
@@ -25,11 +26,16 @@ const visitors = createSlice({
             console.log(email, time)
             let visitorId = state.visitorList.findIndex(visitor => visitor.email === email);
             console.log(visitorId);
+
             if(visitorId !== -1){
                 state.visitorList[visitorId].isLoggedIn = false;
                 state.visitorList[visitorId].timeOut = time;
 
-                console.log("visitor slice-----",state.visitorList[visitorId]);
+                const {dateCurrent, email, isLoggedIn, loginMethod, timeIn, timeOut} = state.visitorList[visitorId];
+                console.log(dateCurrent, email, isLoggedIn, loginMethod, timeIn, timeOut);
+
+                logVisitor(email, dateCurrent, timeIn, timeOut, loginMethod);
+                state.visitorList = state.visitorList.filter(visitor => visitor.email !== email);
 
             }
         }
