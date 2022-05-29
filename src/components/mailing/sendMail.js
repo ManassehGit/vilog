@@ -1,7 +1,6 @@
 // "use strict";
 const nodemailer = require("nodemailer");
 const {google} = require('googleapis');
-const res = require("express/lib/response");
 
 const CLIENT_ID = '351684500881-6kjjab649ukd0cs1r3booej83dt2k0hm.apps.googleusercontent.com';
 const CLIENT_SECRET = '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';
@@ -10,9 +9,15 @@ const REFRESH_TOKEN = '1//04Q7s6rrbDPPuCgYIARAAGAQSNwF-L9IrHH1UcdK-MsPbIeE4Z672x
 
  const  oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
- oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN})
+ oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN});
 
- async function sendMail () {
+ class SendQR {
+
+  constructor(){
+    
+  }
+
+  async sendEMail () {
     try{
       const accessToken = await oAuth2Client.getAccessToken();
 
@@ -36,7 +41,7 @@ const REFRESH_TOKEN = '1//04Q7s6rrbDPPuCgYIARAAGAQSNwF-L9IrHH1UcdK-MsPbIeE4Z672x
         html: '<h1><code>Welcome to the page</code></h1>'
       }
 
-      const result = transport.sendMail(mailOptions);
+      const result = await transport.sendMail(mailOptions);
       return result;
     }catch(error){
       return error;
@@ -44,9 +49,16 @@ const REFRESH_TOKEN = '1//04Q7s6rrbDPPuCgYIARAAGAQSNwF-L9IrHH1UcdK-MsPbIeE4Z672x
  }
 
 
-//  export const sendQRMail = async () => {
+ async sendQRMail() {
+    try{
+      const result = await this.sendEMail();
+      return result;
+    }catch(err){
+      return err;
+    }
+ }
+ }
 
-//  }
-
- sendMail().then(result => console.log('Email sent', result))
- .catch(error => console.log(error.message));
+ const sendVisitorQR = new SendQR();
+ let testing = sendVisitorQR.sendQRMail();
+ console.log(testing);
