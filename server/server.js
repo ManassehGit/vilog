@@ -8,10 +8,6 @@ const app = express();
 
 
 const bodyParser = require('body-parser')
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({
-//   extended: true
-// }));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -19,14 +15,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-// app.use(
-//     express.urlencoded({
-//       extended: true
-//     })
-//   )
-  
-//   app.use(express.json())
-  
 
 
 let port = process.env.PORT || 3001;
@@ -69,6 +57,7 @@ app.get('/visitors', async (req, res, next) => {
             return res.rows
         }
     })
+    console.log(result)
 
 })
 
@@ -99,11 +88,22 @@ app.post('/addVisitor', async (req, res, next) => {
     }
 })
 
-app.delete('/deleteUser', (req, res, next) => {
-    console.log(JSON.stringify(req.body))
+app.delete('/deleteUser/:id', async (req, res, next) => {
+    console.log(req.params);
+    try{
+        // console.log(req.body)
+        const {id} = req.params;
+        
+        const result = await pool.query(`DELETE FROM Users WHERE id='${id}' RETURNING *;`)
+        console.log(result.rows)
+        return res.json(result.rows);
+    
+    }catch(err){
+        console.log("Sorry error",err.message);
+    }
 })
 
-app.put('/editUser', (req, res, next) => {
+app.put('/editUser/:id', (req, res, next) => {
     console.log(JSON.stringify(req.body))
 })
 
