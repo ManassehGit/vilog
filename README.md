@@ -1,6 +1,6 @@
 # ViLog
 
-![ViLog Logo](/public/viLog.png?raw=true "Optional Title"){ width: 200px; }
+![ViLog Logo](/public/viLog.png?raw=true "Optional Title")
 
 ## Project Objective
 
