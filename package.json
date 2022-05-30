@@ -10,7 +10,9 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "concurrently": "^7.2.1",
     "date-and-time": "^2.3.1",
+    "googleapis": "^100.0.0",
     "html5-qrcode": "^2.2.1",
     "http-proxy-middleware": "^2.0.6",
     "nodemailer": "^6.7.5",
@@ -34,10 +36,11 @@
   },
   "scripts": {
     "start-client": "react-scripts start",
-    "start": "npm run build && (cd server && npm start)",
+    "start": "set PORT=3000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"npm start --prefix server\" \"npm run start-client\" "
   },
   "eslintConfig": {
     "extends": [
@@ -45,7 +48,6 @@
       "react-app/jest"
     ]
   },
-  
   "browserslist": {
     "production": [
       ">0.2%",
