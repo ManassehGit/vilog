@@ -1,6 +1,4 @@
 import React, {useState, useRef} from 'react'
-// import emailjs from '@emailjs/browser';
-import QRCode from 'qrcode';
 import swal from 'sweetalert';
 import {sendVisitorQR} from '../mailing/sendMail';
 
@@ -8,19 +6,6 @@ import {sendVisitorQR} from '../mailing/sendMail';
   const RegisterForQR = () => {
 
     const [input, setInput] = useState("");
-
-
-    const generateQR = text => {
-      QRCode.toDataURL(text)
-      .then(url => {
-        console.log(url)
-      })
-      .catch(err => {
-        console.error(err)
-      })
-      }
-    
-      // generateQR("manasseh.sarfo@amalitech.org");
 
       const handleText = ({target}) => {
         console.log(target, target.value);

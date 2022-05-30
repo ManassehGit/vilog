@@ -18,34 +18,12 @@ const REFRESH_TOKEN = '1//04Q7s6rrbDPPuCgYIARAAGAQSNwF-L9IrHH1UcdK-MsPbIeE4Z672x
     this.dataLink = "";
   }
 
-  // async convertURIToImageData (url) {
-  //   try{
-  //     const canvas = document.createElement('canvas')
-  //     const context = canvas.getContext('2d')
-  //     const image = new Image();
-  //     image.onload = () => {
-  //       canvas.width = image.width;
-  //       canvas.height = image.height;
-  //       context.drawImage(image, 0, 0, canvas.width, canvas.height);
-  //       resolve(context.getImageData(0, 0, canvas.width, canvas.height));
-  //     }
-  //     image.crossOrigin = "Anonymous";
-  //     image.src = url;
-  //   }catch(err){
-  //     return err;
-  //   }
-  // }
 
-  // async load (url) {
-  //   const img = await this.convertURIToImageData(url)
-  //   console.log(img)
-  // }
 
    async generateQR (text) {
      try{
         const url = await QRCode.toDataURL(text);
-        let data = url.replace(/.*,/,'');
-        let img = new Buffer.from(data,'base64')
+       
         return url;
       }catch(err) {
         console.error(err)
