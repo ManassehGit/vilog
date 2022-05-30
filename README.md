@@ -1,6 +1,6 @@
 # ViLog
 
-![ViLog Logo](/public/viLog.png?raw=true "Optional Title")
+![ViLog Logo](/public/viLog.png?raw=true "Logo")
 
 ## Project Objective
 
@@ -32,11 +32,16 @@ You may also see any lint errors in the console.
 - Two tables **(Users, Visitors)** on the database
 - Users table to keep records of host and admins
 - Visitors table to keep daily record of the visitors, login, logout times and the login methods.
+- ![Visitors Table](/public/databaseVisitorsTable.png?raw=true "Optional Title")
 - App makes use of redux store to temporarily hold visitor data before pushing to dataabase.
 
 ### `For Host / Admin`
 
+![Main menu](/public/mainMenu.png?raw=true "Optional Title")
+
 On the main index page host or admin would select the host/Admin option. Which then redirects to Login page with a Sign Up option
+
+![Host sign in](/public/adminLogin.png?raw=true "Optional Title")
 
 After host or admin, user is then redirected to either the host or admin dashboard depending on the admin access
 
@@ -48,7 +53,6 @@ While admin dashboard has an added functionality of managing the employee data, 
 
 On the main index page visitor would select the visitor option. Which then redirects to the visitor login and logout page
 
-
 ### login
 
 ```txt
@@ -57,10 +61,13 @@ With the visitor login, a visitor has the options to login with an email(recomme
 The fourth option is to register for a QR code. After selecting this option, visitor then would enter the email in the input and receive the QR code upon submission.
 ```
 
+![Visitor Login](/public/visitorLoginOptions.png?raw=true "Optional Title")
+
 ### logout
 
 ```txt
 Visitor selects the logout tab, and start typing the email or username. A list of visitor cards with logged in user details matching the been typed email/username is made available, which the visitor would then click to logout.
 ```
+![Visitor Logout](/public/visitorLogout.png?raw=true "Optional Title")
 
 ## **vilog**
