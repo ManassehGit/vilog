@@ -1,5 +1,7 @@
 # ViLog
 
+![ViLog Logo](/public/viLog.png?raw=true "Optional Title")
+
 ## Project Objective
 
 The AmaliTech Visitors Logbook is an automated monitoring system for AmaliTech that
