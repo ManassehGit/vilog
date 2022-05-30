@@ -10,6 +10,7 @@ const Home = () => {
       console.log(visitors)
       // npm run build && (cd server && npm start)
       // "start-client": "react-scripts start",
+      // set PORT=3000 && react-scripts start
 
   return (
     <div>
