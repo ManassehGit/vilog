@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { logoutVisitor } from '../../store/visitorSlice';
 import date from 'date-and-time';
-import { logVisitor } from '../../functions/functions';
+// import { logVisitor } from '../../functions/functions';
 
 const SignOutCard = ({username, loginTime, loginMethod}) => {
     const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react'
 import swal from 'sweetalert2'; 
 import date from 'date-and-time';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addVisitor } from '../../store/visitorSlice';
 
 const EmailUsernameField = ({text, choice}) => {

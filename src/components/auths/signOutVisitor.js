@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import { useSelector } from 'react-redux';
-import swal from 'sweetalert2'; 
-import date from 'date-and-time';
+// import swal from 'sweetalert2'; 
+// import date from 'date-and-time';
 import SignOutCard from './signOutCard';
 
 
@@ -10,9 +10,9 @@ const SignOutVisitor = () => {
     const [suggestions, setSuggestions] = useState([]);
 
     let visitors = useSelector(state => state.visitors.visitorList);
-    let now = new Date();
-    let day = date.format(now, "YYYY-MM-DD");
-    let time = date.format(now, "HH:mm:ss");
+    // let now = new Date();
+    // let day = date.format(now, "YYYY-MM-DD");
+    // let time = date.format(now, "HH:mm:ss");
     
 
     const handleSignout = ({target}) => {
