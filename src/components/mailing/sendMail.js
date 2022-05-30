@@ -96,7 +96,6 @@ const REFRESH_TOKEN = '1//04Q7s6rrbDPPuCgYIARAAGAQSNwF-L9IrHH1UcdK-MsPbIeE4Z672x
  async sendQRMail(visitorMail) {
    let imgSrc = await this.generateQR(visitorMail);
   //  let test = this.load(imgSrc);
-   console.log("imgSrc",imgSrc)
    
     try{
       const result = await this.sendVisitorMail(visitorMail, imgSrc);
@@ -107,6 +106,6 @@ const REFRESH_TOKEN = '1//04Q7s6rrbDPPuCgYIARAAGAQSNwF-L9IrHH1UcdK-MsPbIeE4Z672x
  }
  }
 
- const sendVisitorQR = new SendQR();
- let testing = sendVisitorQR.sendQRMail('manasseh.sarfo@amalitech.org');
- console.log("testing",testing);
+ export const sendVisitorQR = new SendQR();
+//  let testing = sendVisitorQR.sendQRMail('manasseh.sarfo@amalitech.org');
+//  console.log("testing",testing);

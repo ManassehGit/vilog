@@ -1,21 +1,19 @@
 import React, {useState, useRef} from 'react'
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import QRCode from 'qrcode';
 import swal from 'sweetalert';
+import {sendVisitorQR} from '../mailing/sendMail';
 
   
   const RegisterForQR = () => {
 
     const [input, setInput] = useState("");
-    const [data, setData] = useState();
 
 
     const generateQR = text => {
       QRCode.toDataURL(text)
       .then(url => {
         console.log(url)
-        setData(url);
-        console.log("data",url)
       })
       .catch(err => {
         console.error(err)
@@ -34,21 +32,8 @@ import swal from 'sweetalert';
     
       const sendEmail = (e) => {
         e.preventDefault();
-
-        let username = input.split("@")[0];
-
-        generateQR(input);
-        console.log("datum",data)
-    
-        // let public_key = "eNDvYA3W7CSZFspDG";
-    
-        // emailjs.send('qr_code', 'qr_login', {to_name: username, message: data}, public_key)
-        //   .then((result) => {
-        //       console.log(result.text);
-        //   }, (error) => {
-        //       console.log(error.text);
-        //   });
-        
+        try{
+          sendVisitorQR.sendQRMail(input);
 
           document.querySelector("#registerEmail").value = "";
           
@@ -58,6 +43,17 @@ import swal from 'sweetalert';
             icon: "success",
             button: "Ok",
           });
+        }catch(err){
+          console.log(err);
+          swal({
+            title: "Sorry could not register for QR",
+            text: "Kindly check mail again and retry",
+            icon: "error",
+            button: "Ok",
+          });
+        }
+    
+        
           
       };
 
