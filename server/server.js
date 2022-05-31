@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const {Pool} = require('pg');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 
 const uri = "postgres://eatpxpnqscoxqx:0765d0686bedc1718fc1298cb6162a48fee9e458fe1a89598d4f8a2062f8ff33@ec2-54-165-90-230.compute-1.amazonaws.com:5432/ddbhdm3cc7l5kg";
@@ -19,6 +21,23 @@ app.use(bodyParser.json())
 
 let port = process.env.PORT || 3001;
 
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title: "ViLog APIs",
+            description: 'ViLog endpoints for interactions with the database and working with the visitors and users tables',
+            contact: {
+                name: 'Manasseh'
+            },
+            servers: ["http://localhost:3001"]
+        }
+    },
+    apis: ["server.js"]
+}
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 
@@ -29,20 +48,39 @@ const pool = new Pool({
  }
 });
 
+/**
+ * @swagger
+ * /testing:
+ *  get: 
+ *      description: Use to request the list of hosts and admins
+ *      responses: 
+ *          '200': A successful response
+ */
+ app.get("/testing", (req, res) => {
+     console.log("hello there")
+    res.status(200).send("GHello there");
+})
 
+// Routes
+/**
+ * @swagger
+ * /users:
+ *  get: 
+ *      description: Use to request the list of hosts and admins
+ *      responses: 
+ *          200: A successful response
+ */
 app.get('/users', async (req, res, next) => {
-    res.status(201).json({msg: "Welcome to the serve page"});
+    // res.status(201).json({msg: "Welcome to the serve page"});
     const result = await pool.query(`SELECT * FROM Users;`, (err, res) => {
         if (err) {
-            console.log("Error - Failed to select all from Users");
             console.log(err);
         }
         else{
-            console.log(res.rows);
-            return res.rows
+            return res.rows;
         }
     })
-    console.log(result)
+    res.status(200).send(result)
 
 })
 
@@ -65,7 +103,6 @@ app.post('/addUser', async (req, res, next) => {
     try{
         console.log(req.body)
         const {firstname, password, department} = req.body;
-        // console.log("result", `INSERT INTO Users(username, user_password, department) VALUES('${firstname}', '${password}', '${department}') RETURNING *;`);
         const result = await pool.query(`INSERT INTO Users(username, user_password, department) VALUES('${firstname}', '${password}', '${department}') RETURNING *;`)
         
         return res.json(result);
@@ -91,7 +128,6 @@ app.post('/addVisitor', async (req, res, next) => {
 app.delete('/deleteUser/:id', async (req, res, next) => {
     console.log(req.params);
     try{
-        // console.log(req.body)
         const {id} = req.params;
         
         const result = await pool.query(`DELETE FROM Users WHERE id='${id}' RETURNING *;`)
