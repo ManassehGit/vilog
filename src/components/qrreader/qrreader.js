@@ -47,6 +47,8 @@ const Qrreader = (props) => {
         if(decodedText){
           setQrscan(decodedText);
 
+          handleLogin();
+
         }
     }
 
