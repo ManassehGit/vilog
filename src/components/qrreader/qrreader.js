@@ -5,10 +5,12 @@ import Html5QrcodePlugin from './html5QRPlugin'
 import swal from 'sweetalert2'; 
 import date from 'date-and-time';
 import { addVisitor } from '../../store/visitorSlice';
+import {useDispatch} from 'react-redux';
 
 
 const Qrreader = (props) => {
     const [qrscan, setQrscan] = useState('No result');
+    const dispatch = useDispatch();
     
     // const handleScan = data => {
     //     if (data) {
@@ -23,10 +25,10 @@ const Qrreader = (props) => {
       let day = date.format(now, "YYYY-MM-DD");
       let time = date.format(now, "HH:mm:ss");
       try{
-        dispatch(addVisitor({email: input, dateCurrent: day, timeIn: time, isLoggedIn: true, timeOut: null, loginMethod: choice}));
+        dispatch(addVisitor({email: qrscan, dateCurrent: day, timeIn: time, isLoggedIn: true, timeOut: null, loginMethod: "qrcode"}));
             
             swal.fire({
-              title: `${input} logged in successfully`,
+              title: `${qrscan} logged in successfully`,
               text: "Welcome to the organization, feel at home",
               icon: "success",
               confirmButtonText: "Ok",
@@ -43,7 +45,7 @@ const Qrreader = (props) => {
     function onNewScanResult(decodedText, decodedResult) {
         // Handle the result here.
         if(decodedText){
-          setQrscan(decodeText);
+          setQrscan(decodedText);
 
         }
     }
