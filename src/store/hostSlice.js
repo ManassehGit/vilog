@@ -4,12 +4,14 @@ const host = createSlice({
     name: "host",
     initialState: {
         currentUserEmail: '',
+        department: '',
         isLoggedIn: false,
         isAdmin: false
     },
     reducers: {
         setCurrentUserEmail  (state, action) {
-            state.currentUserEmail = action.payload;
+            const {usermail} = action.payload;
+            state.currentUserEmail = usermail;
         },
         toggleLoginStatus (state, action) {
             state.isLoggedIn = true;
