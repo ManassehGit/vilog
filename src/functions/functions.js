@@ -10,7 +10,17 @@ export const logVisitor = async (email, dateCurrent, timeIn, timeOut, loginMetho
             timeOut: timeOut, 
             loginMethod: loginMethod
         })
-        console.log("Result----", result)
+        return result;
+
+    }catch(err){
+        console.log(err)
+    }
+}
+
+export const getUsers = async () => {
+
+    try{
+        const result = await axios.get("/users");
         return result;
 
     }catch(err){
