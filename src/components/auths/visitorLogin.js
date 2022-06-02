@@ -33,7 +33,7 @@ const VisitorLogin = () => {
     
   </div>
   <div className="tab-content" id="v-pills-tabContent">
-    <div className="tab-pane fade show active" id="v-pills-signin" role="tabpanel" aria-labelledby="v-pills-signin-tab" tabindex="0">
+    <div className="tab-pane fade show active" id="v-pills-signin" role="tabpanel" aria-labelledby="v-pills-signin-tab" tabIndex="0">
     <div className="mb-3 row">
 
 {/*  */}

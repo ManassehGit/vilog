@@ -9,9 +9,9 @@ const EmailUsernameField = ({text, choice}) => {
   const dispatch = useDispatch();
 
   const handleText = ({target}) => {
-    console.log(target, target.value);
+    // console.log(target, target.value);
     setInput(target.value);
-    console.log(input)
+    // console.log(input)
   }
 
   const form = useRef();
@@ -44,10 +44,10 @@ const EmailUsernameField = ({text, choice}) => {
   return (
     <div>
         <form ref={form} onSubmit={handleLogin}>
-        <label for="emailUsername" class="col-sm-8 col-form-label mt-4">{text}</label>
-          <div class="col-sm-10">
-            <input type={typeVal} class="form-control" id="emailUsername" placeholder={`Kindly enter here ...`} onChange={handleText}/>
-            <button type="submit" class="btn btn-outline-primary mt-2">Send</button>
+        <label htmlFor="emailUsername" className="col-sm-8 col-form-label mt-4">{text}</label>
+          <div className="col-sm-10">
+            <input type={typeVal} className="form-control" id="emailUsername" placeholder={`Kindly enter here ...`} onChange={handleText}/>
+            <button type="submit" className="btn btn-outline-primary mt-2">Send</button>
           </div>
         </form>
     </div>
