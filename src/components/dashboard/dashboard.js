@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <div>
       <Admin dataProvider={restProvider('http://localhost:3001')}>
-        <Resource name="visitors" />
+        <Resource name="dashboard" />
       </Admin>
     </div>
   )
