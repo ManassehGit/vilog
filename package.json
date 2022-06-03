@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "module": "commonjs",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "@babel/eslint-parser": "^7.18.2",
     "@mui/material": "^5.8.0",
