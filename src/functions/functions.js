@@ -27,3 +27,12 @@ export const getUsers = async () => {
         console.log(err)
     }
 }
+
+export const sendMail = async (username) => {
+    try{
+        const result = await axios.get(`/sendMail/${username}`);
+        return result;
+    }catch(err){
+        console.log(err)
+    }
+}
