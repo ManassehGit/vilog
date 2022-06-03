@@ -1,3 +1,4 @@
+const sendVisitorQR = require('./mailing/sendMail');
 const express = require('express');
 const path = require('path');
 const {Pool} = require('pg');
@@ -47,6 +48,14 @@ const pool = new Pool({
  rejectUnauthorized: false
  }
 });
+
+
+app.get("/sendMail/:usermail", async (req, res) => {
+    const {usermail} = req.params;
+    let result = await sendVisitorQR.sendQRMail(`${usermail}`)
+    res.status(201).send(result);
+    console.log("result", result)
+})
 
 /**
  * @swagger

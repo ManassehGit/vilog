@@ -33,6 +33,10 @@ const REFRESH_TOKEN = '1//04Q7s6rrbDPPuCgYIARAAGAQSNwF-L9IrHH1UcdK-MsPbIeE4Z672x
   async sendVisitorMail (visitorMail, dataURL) {
     try{
       const accessToken = await oAuth2Client.getAccessToken();
+      let username = visitorMail.split(/[.,@]/)[0];
+      const firstLetter = username[0].toUpperCase();
+      const otherLetters = username.slice(1);
+      username = firstLetter + otherLetters;
 
       const transport = nodemailer.createTransport({
         service: 'gmail',
@@ -61,7 +65,7 @@ const REFRESH_TOKEN = '1//04Q7s6rrbDPPuCgYIARAAGAQSNwF-L9IrHH1UcdK-MsPbIeE4Z672x
           subject: 'Visitor login QR Code',
           text: 'Kindly use the QR code given to login at the premise at the next visit',
           attachDataUrls: true, //to accept base64 content in messsage
-          html: `<h1>Visitor QR Login</h1><hr /><p>Kindly use the QR code given to login at the premise at the next visit</p><img src="${dataURL}" alt="QR Code">`
+          html: `<h1>Visitor QR Login</h1><hr /><br /><h3>Hello ${username}</h3><p>Kindly use the QR code given to login at the premise at the next visit</p><img src="${dataURL}" alt="QR Code">`
         }
       );
       return result;
@@ -84,6 +88,7 @@ const REFRESH_TOKEN = '1//04Q7s6rrbDPPuCgYIARAAGAQSNwF-L9IrHH1UcdK-MsPbIeE4Z672x
  }
  }
 
- export const sendVisitorQR = new SendQR();
+let sendVisitorQR = new SendQR();
+module.exports = sendVisitorQR;
 //  let testing = sendVisitorQR.sendQRMail('manasseh.sarfo@amalitech.org');
 //  console.log("testing",testing);
