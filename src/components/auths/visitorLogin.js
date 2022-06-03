@@ -8,7 +8,6 @@ const VisitorLogin = () => {
   const [choice, setChoice] = useState("");
 
   const handleChoice = ({target}) => {
-    console.log(target, target.value);
     setChoice(target.value);
   }
 

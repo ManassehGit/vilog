@@ -15,9 +15,8 @@ import {sendMail} from '../../functions/functions';
       const sendEmail = (e) => {
         e.preventDefault();
         try{
-          // sendVisitorQR.sendQRMail(input);
-          sendMail(input);
-
+          if(input){
+            sendMail(input);
           document.querySelector("#registerEmail").value = "";
           
           swal.fire({
@@ -26,6 +25,7 @@ import {sendMail} from '../../functions/functions';
             icon: "success",
             confirmButtonText: "Ok",
           });
+          }
         }catch(err){
           console.log(err);
           swal.fire({

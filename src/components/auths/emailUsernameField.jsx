@@ -23,7 +23,8 @@ const EmailUsernameField = ({text, choice}) => {
     let day = date.format(now, "YYYY-MM-DD");
     let time = date.format(now, "HH:mm:ss");
     try{
-      dispatch(addVisitor({email: input, dateCurrent: day, timeIn: time, isLoggedIn: true, timeOut: null, loginMethod: choice}));
+      if(input){
+        dispatch(addVisitor({email: input, dateCurrent: day, timeIn: time, isLoggedIn: true, timeOut: null, loginMethod: choice}));
       document.querySelector("#emailUsername").value = "";
           
           swal.fire({
@@ -32,6 +33,7 @@ const EmailUsernameField = ({text, choice}) => {
             icon: "success",
             confirmButtonText: "Ok",
           });
+      }
     }catch(err){
       console.log(err)
     }
