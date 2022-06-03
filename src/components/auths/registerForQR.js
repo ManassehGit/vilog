@@ -1,16 +1,13 @@
 import React, {useState, useRef} from 'react'
 import swal from 'sweetalert2';
-// import {sendVisitorQR} from '../mailing/sendMail';
-
+import {sendMail} from '../../functions/functions';
   
   const RegisterForQR = () => {
 
     const [input, setInput] = useState("");
 
       const handleText = ({target}) => {
-        console.log(target, target.value);
         setInput(target.value);
-        console.log(input)
       }
     
       const form = useRef();
@@ -19,11 +16,12 @@ import swal from 'sweetalert2';
         e.preventDefault();
         try{
           // sendVisitorQR.sendQRMail(input);
+          sendMail(input);
 
           document.querySelector("#registerEmail").value = "";
           
           swal.fire({
-            title: "Successfully Sent Mail",
+            title: `Successfully Sent Mail to ${input}`,
             text: "Kindly check mail for the QR code",
             icon: "success",
             confirmButtonText: "Ok",
