@@ -16,7 +16,7 @@ function App() {
       <Route path="signup" element={<HostSignup />} />
       <Route path="loginSignup" element={<VisitorLogin />} />
       <Route path="host" element={<HostPage />} />
-      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="dashboard/*" element={<Dashboard />} />
       
     </Routes>
   </Router>
