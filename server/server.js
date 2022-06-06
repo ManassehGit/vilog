@@ -103,7 +103,7 @@ app.get('/visitors', async (req, res, next) => {
 
 })
 
-app.post('/addUser', async (req, res, next) => {
+app.post('/users', async (req, res, next) => {
     try{
         console.log(req.body)
         const {firstname, password, department} = req.body;
@@ -116,7 +116,7 @@ app.post('/addUser', async (req, res, next) => {
     }
 })
 
-app.post('/addVisitor', async (req, res, next) => {
+app.post('/visitors', async (req, res, next) => {
     try{
         console.log("Req bosy",req.body)
         const {username, dateCurrent, timeIn, timeOut, loginMethod} = req.body;
@@ -129,7 +129,7 @@ app.post('/addVisitor', async (req, res, next) => {
     }
 })
 
-app.delete('/deleteUser/:id', async (req, res, next) => {
+app.delete('/users/:id', async (req, res, next) => {
     console.log(req.params);
     try{
         const {id} = req.params;
@@ -143,7 +143,7 @@ app.delete('/deleteUser/:id', async (req, res, next) => {
     }
 })
 
-app.put('/editUser/:id', (req, res, next) => {
+app.put('/users/:id', (req, res, next) => {
     console.log(JSON.stringify(req.body))
 })
 

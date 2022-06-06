@@ -3,7 +3,7 @@ import axios from "axios"
 export const logVisitor = async (email, dateCurrent, timeIn, timeOut, loginMethod) => {
 
     try{
-        const result = await axios.post("/addVisitor", {
+        const result = await axios.post("/visitors", {
             username: email, 
             dateCurrent: dateCurrent, 
             timeIn: timeIn, 
