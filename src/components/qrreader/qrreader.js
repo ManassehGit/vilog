@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 // import TextareaAutosize from '@mui/material/TextareaAutosize'
 // import adapter from 'webrtc-adapter'
 import Html5QrcodePlugin from './html5QRPlugin'
@@ -6,11 +6,14 @@ import swal from 'sweetalert2';
 import date from 'date-and-time';
 import { addVisitor } from '../../store/visitorSlice';
 import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
 
 const Qrreader = (props) => {
-    const [qrscan, setQrscan] = useState('No result');
+    let qrscan = 'No result';
+    let captured = false;
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     
     // const handleScan = data => {
     //     if (data) {
@@ -33,6 +36,9 @@ const Qrreader = (props) => {
               icon: "success",
               confirmButtonText: "Ok",
             });
+            qrscan = "";
+            captured = false;
+            navigate('/')
       }catch(err){
         console.log(err)
       }      
@@ -44,21 +50,26 @@ const Qrreader = (props) => {
 
     function onNewScanResult(decodedText, decodedResult) {
         // Handle the result here.
-        if(decodedText){
-          setQrscan(decodedText);
+        if(decodedText && (captured===false)){
+          qrscan = decodedText;
+          console.log(decodedText);
+          captured = true;
 
           handleLogin();
-
         }
+        return decodedText;
     }
 
   return (
     <>
-    <Html5QrcodePlugin 
+    {captured === false? <Html5QrcodePlugin 
                 fps={10}
                 qrbox={250}
                 disableFlip={false}
                 qrCodeSuccessCallback={onNewScanResult}/>
+                :
+                ""
+    }
     
     </>
   )

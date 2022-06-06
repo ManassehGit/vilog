@@ -3,6 +3,8 @@ import React from 'react'
 // import HostDashContent from './hostDashContent'
 import ListVisitors from './listVisitors'
 
+// localStorage.setItem()
+
 const HostPage = () => {
   return (
     <div>

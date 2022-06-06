@@ -21,7 +21,18 @@ export const getUsers = async () => {
 
     try{
         const result = await axios.get("/users");
-        return result;
+        return result.data;
+
+    }catch(err){
+        console.log(err)
+    }
+}
+
+export const getVisitors = async () => {
+
+    try{
+        const result = await axios.get("/visitors");
+        return result.data;
 
     }catch(err){
         console.log(err)
@@ -36,3 +47,4 @@ export const sendMail = async (username) => {
         console.log(err)
     }
 }
+
