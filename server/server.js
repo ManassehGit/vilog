@@ -81,30 +81,25 @@ app.get("/sendMail/:usermail", async (req, res) => {
  */
 app.get('/users', async (req, res, next) => {
     // res.status(201).json({msg: "Welcome to the serve page"});
-    const result = await pool.query(`SELECT * FROM Users;`, (err, res) => {
-        if (err) {
-            console.log(err);
-        }
-        else{
-            return res.rows;
-        }
-    })
-    res.status(200).send(result)
+    try{
+        const result = await pool.query(`SELECT * FROM Users;`);
+        res.status(200).send(result);
+    }catch(err){
+        console.log(err)
+    }
+   
+    
 
 })
 
 app.get('/visitors', async (req, res, next) => {
-    const result = await pool.query(`SELECT * FROM Visitors;`, (err, res) => {
-        if (err) {
-            console.log("Error - Failed to select all from Users");
-            console.log(err);
-        }
-        else{
-            // console.log(res.rows);
-            return res.rows
-        }
-    })
-    console.log(result)
+    try{
+        const result = await pool.query(`SELECT * FROM Visitors;`);
+        res.status(200).send(result.rows);
+    }catch(err){
+        console.log(err);
+    }
+   
 
 })
 
