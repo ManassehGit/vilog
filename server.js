@@ -5,6 +5,8 @@ const {Pool} = require('pg');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
+swaggerDocument = require('./swagger.json');
+
 
 const uri = "postgres://eatpxpnqscoxqx:0765d0686bedc1718fc1298cb6162a48fee9e458fe1a89598d4f8a2062f8ff33@ec2-54-165-90-230.compute-1.amazonaws.com:5432/ddbhdm3cc7l5kg";
 const app = express();
@@ -20,7 +22,7 @@ app.use(bodyParser.json())
 
 
 
-let port = process.env.PORT || 3001;
+let port = process.env.PORT || 8000;
 
 const swaggerOptions = {
     swaggerDefinition: {
@@ -37,9 +39,11 @@ const swaggerOptions = {
 }
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
+//Was used to serve the static build of the react app
+// app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 
 const pool = new Pool({
@@ -57,28 +61,8 @@ app.get("/sendMail/:usermail", async (req, res) => {
     console.log("result", result)
 })
 
-/**
- * @swagger
- * /testing:
- *  get: 
- *      description: Use to request the list of hosts and admins
- *      responses: 
- *          '200': A successful response
- */
- app.get("/testing", (req, res) => {
-     console.log("hello there")
-    res.status(200).send("GHello there");
-})
 
 // Routes
-/**
- * @swagger
- * /users:
- *  get: 
- *      description: Use to request the list of hosts and admins
- *      responses: 
- *          200: A successful response
- */
 app.get('/users', async (req, res, next) => {
     // res.status(201).json({msg: "Welcome to the serve page"});
     try{
