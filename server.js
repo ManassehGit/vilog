@@ -38,7 +38,8 @@ let port = process.env.PORT || 8000;
 //     apis: ["server.js"]
 // }
 
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
+// const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
 app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
