@@ -8,6 +8,7 @@ const Home = () => {
 
       let visitors = useSelector(state => state.visitors.visitorEmails);
       console.log(visitors)
+      // console.log("check",check)
       // npm run build && (cd server && npm start)
       // "start-client": "react-scripts start",
       // set PORT=3000 && react-scripts start

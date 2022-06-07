@@ -95,7 +95,7 @@ app.get('/users', async (req, res, next) => {
 app.get('/visitors', async (req, res, next) => {
     try{
         const result = await pool.query(`SELECT * FROM Visitors;`);
-        res.status(200).send(result.rows);
+        res.status(200).send(result);
     }catch(err){
         console.log(err);
     }

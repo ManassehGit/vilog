@@ -32,7 +32,7 @@ export const getVisitors = async () => {
 
     try{
         const result = await axios.get("/visitors");
-        return result.data;
+        return result.data.rows;
 
     }catch(err){
         console.log(err)

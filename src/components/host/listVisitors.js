@@ -1,15 +1,19 @@
 import React, {useEffect} from 'react'
 import {useSelector} from 'react-redux'
 import axios from 'axios';
-import {getVisitors} from '../../functions/functions';
-
+import {getVisitors, getUsers} from '../../functions/functions';
 
 const ListVisitors = () => {
-
   let visitors = useSelector(state => state.visitors.visitorEmails);
-  let dbvisitors = getVisitors();
-  let items = dbvisitors.then(visitor => console.log(visitor)).catch((err) => {console.log(err)})
-  console.log("database visitors----", items )
+
+  const getTheVisitors = async () => {
+    let dbvisitors = await getVisitors();
+    let result = await dbvisitors;
+    return result;
+  }
+  
+  let dbvisitors = getTheVisitors();
+  console.log("llllll--------", dbvisitors)
   
   
   const handleClick = async () => {
