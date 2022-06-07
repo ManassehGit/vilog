@@ -31,7 +31,26 @@
               }
             }
           }
-        }
+        },
+        "/addUser": {
+            "post": {
+              "tags": ["Users"],
+              "description": "Create new user in system",
+              "parameters": [
+                {
+                  "name": "user",
+                  "in": "body",
+                  "description": "User that we want to create"
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "New user is created"
+                }
+              }
+            }
+          }
       },
       "definitions": {
         "users": {

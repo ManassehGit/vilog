@@ -24,19 +24,19 @@ app.use(bodyParser.json())
 
 let port = process.env.PORT || 8000;
 
-const swaggerOptions = {
-    swaggerDefinition: {
-        info: {
-            title: "ViLog APIs",
-            description: 'ViLog endpoints for interactions with the database and working with the visitors and users tables',
-            contact: {
-                name: 'Manasseh'
-            },
-            servers: ["http://localhost:3001"]
-        }
-    },
-    apis: ["server.js"]
-}
+// const swaggerOptions = {
+//     swaggerDefinition: {
+//         info: {
+//             title: "ViLog APIs",
+//             description: 'ViLog endpoints for interactions with the database and working with the visitors and users tables',
+//             contact: {
+//                 name: 'Manasseh'
+//             },
+//             servers: ["http://localhost:3001"]
+//         }
+//     },
+//     apis: ["server.js"]
+// }
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -87,7 +87,7 @@ app.get('/visitors', async (req, res, next) => {
 
 })
 
-app.post('/users', async (req, res, next) => {
+app.post('/addUser', async (req, res, next) => {
     try{
         console.log(req.body)
         const {firstname, password, department} = req.body;
@@ -100,7 +100,7 @@ app.post('/users', async (req, res, next) => {
     }
 })
 
-app.post('/visitors', async (req, res, next) => {
+app.post('/addVisitor', async (req, res, next) => {
     try{
         console.log("Req bosy",req.body)
         const {username, dateCurrent, timeIn, timeOut, loginMethod} = req.body;
