@@ -30,12 +30,10 @@
     "webrtc-adapter": "^8.1.1"
   },
   "scripts": {
-    "start-client": "react-scripts start",
-    "start": "npm run build && (cd server && npm start)",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "concurrently \"npm start --prefix server\" \"npm run start-client\" "
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
