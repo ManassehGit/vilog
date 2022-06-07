@@ -68,6 +68,7 @@ The fourth option is to register for a QR code. After selecting this option, vis
 ```txt
 Visitor selects the logout tab, and start typing the email or username. A list of visitor cards with logged in user details matching the been typed email/username is made available, which the visitor would then click to logout.
 ```
+
 ![Visitor Logout](/public/visitorLogout.png?raw=true "Optional Title")
 
 ## **vilog**
