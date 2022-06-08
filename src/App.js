@@ -7,12 +7,16 @@ import HostPage from './components/host/hostPage';
 import Dashboard from './components/dashboard/dashboard';
 import HostSignup from './components/auths/hostSignup';
 import Welcome from './components/welcomePage/welcome';
+import VisitorMain from './components/visitorMain/visitorMain';
 
 function App() {
   return (
     <Router>
     <Routes>
-      <Route path="/" element={<Home />}/>
+      <Route path="/" element={<Welcome />}/>
+      <Route path="visitormain" element={<VisitorMain />}/>
+
+      <Route path="start" element={<Home />}/>
       <Route path="login" element={<HostLogin />} />
       <Route path="signup" element={<HostSignup />} />
       <Route path="loginSignup" element={<VisitorLogin />} />

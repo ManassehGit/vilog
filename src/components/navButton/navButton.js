@@ -5,7 +5,14 @@ import { useNavigate } from 'react-router-dom';
 
 const NavButton = ({role}) => {
     const navigate = useNavigate();
-    let roleText = role==="login"? "Host/Admin": "Visitor";
+    let roleText = "";
+    if(role === "login"){
+      roleText = "Host/Admin";
+    }else if(role === "loginSignup"){
+      roleText = "Visitor";
+    }else{
+      roleText = "Start Here";
+    }
 
     const handleClick = () => {
         navigate(role);
