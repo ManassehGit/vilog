@@ -7,6 +7,9 @@ const VisitorMain = () => {
     <div>
         <nav className="navbar navbar-light bg-light">
             <div className='ms-5'><Logo width={"100"} /></div>
+            <span class="navbar-text me-5">
+            Admin Login
+            </span>
         </nav>
     <div className='container'>
     <div className='m-5'>
@@ -37,3 +40,14 @@ const VisitorMain = () => {
 }
 
 export default VisitorMain
+
+/* <form>
+  <div class="form-row">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="First name">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Last name">
+    </div>
+  </div>
+</form> */
