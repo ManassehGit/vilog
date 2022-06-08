@@ -6,6 +6,7 @@ import VisitorLogin from './components/auths/visitorLogin';
 import HostPage from './components/host/hostPage';
 import Dashboard from './components/dashboard/dashboard';
 import HostSignup from './components/auths/hostSignup';
+import Welcome from './components/welcomePage/welcome';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="loginSignup" element={<VisitorLogin />} />
       <Route path="host" element={<HostPage />} />
       <Route path="dashboard/*" element={<Dashboard />} />
+      <Route path="welcome/*" element={<Welcome />} />
       
     </Routes>
   </Router>
