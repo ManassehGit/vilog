@@ -1,16 +1,11 @@
 import React from 'react'
 import Footer from '../footer/footer'
-import Logo from '../logo/logo'
+import NavBar from '../navBar/navBar'
 
 const VisitorMain = () => {
   return (
     <div>
-        <nav className="navbar navbar-light bg-light">
-            <div className='ms-5'><Logo width={"100"} /></div>
-            <span className="navbar-text me-5">
-            Admin Login
-            </span>
-        </nav>
+        <NavBar />
     <div className='container'>
     <div className='m-5'>
     <div className="contaniner jumbotron">
