@@ -31,11 +31,12 @@ const VisitorGuest = () => {
     <div className='container'>
     
     <div>
-        <form ref={form}>
-        <label htmlFor="signoutEmail" className="col-sm-8 col-form-label mt-4"><h1>Who would you be visiting</h1></label>
+    <label htmlFor="signoutEmail" className="col-sm-8 col-form-label mt-4"><h1>Who would you be visiting</h1></label>
+        <form ref={form} class="form-inline">
           <div className="col-sm-10">
             <input type="email" className="form-control form-control-lg" id="signoutEmail" placeholder={`Kindly enter here ...`} onChange={handleSignout}/>
           </div>
+          <button type="submit" className="btn btn-primary m-2">Proceed</button>
         </form>
 
         <div>

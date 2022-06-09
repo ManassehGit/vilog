@@ -1,10 +1,25 @@
 import React from 'react'
 import Footer from '../footer/footer'
 import NavBar from '../navBar/navBar'
+import { useNavigate } from 'react-router-dom'
 
 const VisitorMain = () => {
-  let handleChoice = () => {
-    
+
+  const navigate = useNavigate();
+  
+  let handleChoice = (e) => {
+    let choice =  e.target.value;
+    console.log("yhh", choice)
+    switch(choice){
+      case "login": 
+      navigate("/visitorlogin");
+      break;
+      case "signout":
+        navigate("/visitorlogout");
+      break;
+      default:
+        navigate("/visitormain")
+    }
   }
   return (
     <div>
@@ -18,12 +33,12 @@ const VisitorMain = () => {
         
         <form className="form-inline">
         <div className="form-group mb-2">
-            <label htmlFor="visitorselect" className="sr-only"></label>
-            <input type="text" readOnly className="form-control-plaintext" id="visitorselect" value="Click below to select" />
+            <label htmlFor="visitorselect" className="sr-only">Click below to select</label>
         </div>
-        <select className="form-control form-control-lg" onChange={handleChoice}>
-            <option>I am a visitor</option>
-            <option>I am signing out</option>
+        <select className="form-control form-control-lg" name="visitormain" onChange={handleChoice}>
+            <option value="">Kindly select an option</option>
+            <option value="login">I am a visitor</option>
+            <option value="signout">I am signing out</option>
         </select>
         </form>
 

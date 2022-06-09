@@ -34,7 +34,7 @@ const SignOutVisitor = () => {
         <form ref={form}>
         <label htmlFor="signoutEmail" className="col-sm-8 col-form-label mt-4">Visitor Logout</label>
           <div className="col-sm-10">
-            <input type="email" className="form-control" id="signoutEmail" placeholder={`Kindly enter here ...`} onChange={handleSignout}/>
+            <input type="email" className="form-control form-control-lg" id="signoutEmail" placeholder={`Kindly enter here ...`} onChange={handleSignout}/>
           </div>
         </form>
 
