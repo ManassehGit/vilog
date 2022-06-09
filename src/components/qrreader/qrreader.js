@@ -38,7 +38,7 @@ const Qrreader = (props) => {
             });
             qrscan = "";
             captured = false;
-            navigate('/')
+            navigate('/visitormain')
       }catch(err){
         console.log(err)
       }      
@@ -64,7 +64,7 @@ const Qrreader = (props) => {
     <>
     {captured === false? <Html5QrcodePlugin 
                 fps={10}
-                qrbox={250}
+                qrbox={350}
                 disableFlip={false}
                 qrCodeSuccessCallback={onNewScanResult}/>
                 :
