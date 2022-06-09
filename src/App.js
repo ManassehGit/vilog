@@ -9,7 +9,9 @@ import HostSignup from './components/auths/hostSignup';
 import Welcome from './components/welcomePage/welcome';
 import VisitorMain from './components/visitorMain/visitorMain';
 // import Qrreader from './components/qrreader/qrreader';
-import VisitorQRLogin from './components/visitorSigning/visitorSigning';
+import VisitorQRLogin from './components/visitorSigning/visitorQRSigning';
+import VisitorEmailLogin from './components/visitorSigning/visitorEmailLogin';
+import VisitorGuest from './components/visitorSigning/visitorGuest';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       <Route path="/" element={<Welcome />}/>
       <Route path="visitormain" element={<VisitorMain />}/>
       <Route path="scanqr" element={<VisitorQRLogin />}/>
+      <Route path="visitorlogin" element={<VisitorEmailLogin />}/>
+      <Route path="visitorguest" element={<VisitorGuest />}/>
       
       <Route path="start" element={<Home />}/>
       <Route path="login" element={<HostLogin />} />

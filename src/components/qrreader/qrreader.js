@@ -64,7 +64,7 @@ const Qrreader = (props) => {
     <>
     {captured === false? <Html5QrcodePlugin 
                 fps={10}
-                qrbox={350}
+                qrbox={250}
                 disableFlip={false}
                 qrCodeSuccessCallback={onNewScanResult}/>
                 :

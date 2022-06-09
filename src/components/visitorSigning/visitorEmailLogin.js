@@ -1,8 +1,13 @@
 import React from 'react'
-import Footer from '../footer/footer'
 import NavBar from '../navBar/navBar'
+import { useNavigate } from 'react-router-dom'
 
 const VisitorEmailLogin = () => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("/visitorguest")
+    }
   return (
     <div>
         <NavBar />
@@ -34,11 +39,9 @@ const VisitorEmailLogin = () => {
     </div>
     </div>
     
-    
-  <button type="submit" class="btn btn-primary">Continue</button>
+  <button type="submit" class="btn btn-primary" onClick={handleClick}>Continue</button>
 </form>
 
-    {/* <Footer /> */}
     </div>
     
     </div>

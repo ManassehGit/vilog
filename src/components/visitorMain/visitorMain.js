@@ -3,6 +3,9 @@ import Footer from '../footer/footer'
 import NavBar from '../navBar/navBar'
 
 const VisitorMain = () => {
+  let handleChoice = () => {
+    
+  }
   return (
     <div>
         <NavBar />
@@ -18,10 +21,9 @@ const VisitorMain = () => {
             <label htmlFor="visitorselect" className="sr-only"></label>
             <input type="text" readOnly className="form-control-plaintext" id="visitorselect" value="Click below to select" />
         </div>
-        <select className="form-control form-control-lg">
+        <select className="form-control form-control-lg" onChange={handleChoice}>
             <option>I am a visitor</option>
             <option>I am signing out</option>
-            
         </select>
         </form>
 
@@ -36,13 +38,3 @@ const VisitorMain = () => {
 
 export default VisitorMain
 
-/* <form>
-  <div className="form-row">
-    <div className="col">
-      <input type="text" className="form-control" placeholder="First name">
-    </div>
-    <div className="col">
-      <input type="text" className="form-control" placeholder="Last name">
-    </div>
-  </div>
-</form> */
