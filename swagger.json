@@ -15,6 +15,14 @@
       {
         "name": "Users",
         "description": "API for users in the system"
+      },
+      {
+        "name": "Visitors",
+        "description": "API for visitors in the system"
+      },
+      {
+        "name": "Send Mail",
+        "description": "API for send mail to visitor mail"
       }
     ],
     "schemes": ["http"],
@@ -25,6 +33,17 @@
           "get": {
             "tags": ["Users"],
             "summary": "Get all users in system",
+            "responses": {
+              "200": {
+                "description": "OK"
+              }
+            }
+          }
+        },
+        "/visitors": {
+          "get": {
+            "tags": ["Visitors"],
+            "summary": "Get all visitors in database",
             "responses": {
               "200": {
                 "description": "OK"
@@ -50,6 +69,90 @@
                 }
               }
             }
+          },
+          "/addVisitor": {
+            "post": {
+              "tags": ["Visitors"],
+              "description": "Adds a new visitor to the database",
+              "parameters": [
+                {
+                  "name": "visitor",
+                  "in": "body",
+                  "description": "Visitor that we want to create"
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "New visitor created"
+                }
+              }
+            }
+          },
+          "/user/{id}": {
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID of user that we want to find",
+                "type": "integer"
+              }
+            ],
+            "put": {
+              "summary": "Update user with give ID",
+              "tags": ["Users"],
+              "parameters": [
+                {
+                  "name": "user",
+                  "in": "body",
+                  "description": "User with new values of properties"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "User is updated"
+                  }
+                }
+              }
+            },
+          "/users/{id}": {
+            "delete": {
+              "tags": ["Users"],
+              "description": "Delete a user from the database",
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "description": "User to be deleted"
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "User deleted"
+                }
+              }
+            }
+          },
+          "/sendMail/{usermail}": {
+            "get": {
+              "tags": ["Send Mail"],
+              "description": "Sends mail to the provided mail in params",
+              "parameters": [
+                {
+                  "name": "usermail",
+                  "in": "path",
+                  "description": "Address of email to be sent"
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "Email sent"
+                }
+              }
+            }
           }
       },
       "definitions": {
@@ -67,6 +170,30 @@
               "type": "string"
             },
             "department": {
+              "type": "string"
+            }
+          }
+        },
+        "visitors": {
+          "required": ["id", "username", "date_current", "time_in", "time_out", "login_method"],
+          "properties": {
+            "id": {
+              "type": "integer",
+              "uniqueItems": true
+            },
+            "username": {
+              "type": "string"
+            },
+            "date_current": {
+              "type": "string"
+            },
+            "time_in": {
+              "type": "string"
+            },
+            "time_out": {
+              "type": "string"
+            },
+            "login_method": {
               "type": "string"
             }
           }

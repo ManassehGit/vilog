@@ -4,6 +4,7 @@ const path = require('path');
 const {Pool} = require('pg');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const cors = require('cors');
 
 swaggerDocument = require('./swagger.json');
 
@@ -11,6 +12,8 @@ swaggerDocument = require('./swagger.json');
 const uri = "postgres://eatpxpnqscoxqx:0765d0686bedc1718fc1298cb6162a48fee9e458fe1a89598d4f8a2062f8ff33@ec2-54-165-90-230.compute-1.amazonaws.com:5432/ddbhdm3cc7l5kg";
 const app = express();
 
+//Configure cors
+app.use(cors())
 
 const bodyParser = require('body-parser')
 
@@ -24,27 +27,7 @@ app.use(bodyParser.json())
 
 let port = process.env.PORT || 8000;
 
-// const swaggerOptions = {
-//     swaggerDefinition: {
-//         info: {
-//             title: "ViLog APIs",
-//             description: 'ViLog endpoints for interactions with the database and working with the visitors and users tables',
-//             contact: {
-//                 name: 'Manasseh'
-//             },
-//             servers: ["http://localhost:3001"]
-//         }
-//     },
-//     apis: ["server.js"]
-// }
-
-// const swaggerDocs = swaggerJsDoc(swaggerOptions);
-
 app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-
-//Was used to serve the static build of the react app
-// app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 
 const pool = new Pool({
@@ -54,6 +37,14 @@ const pool = new Pool({
  }
 });
 
+app.get("/", async (req, res) => {
+    const message = `
+            <div style="margin-top: 10em;display: flex;align-items: center;justify-content: space-evenly;">
+                <h1 style="font-size: 4em;">Welcome to V<span style="color:orange;">i</span>Log</h1>
+            </div>
+    `
+    res.status(201).send(message);
+})
 
 app.get("/sendMail/:usermail", async (req, res) => {
     const {usermail} = req.params;
