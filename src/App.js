@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HostLogin from './components/auths/hostLogin';
 import VisitorLogin from './components/auths/visitorLogin';
 import HostPage from './components/host/hostPage';
-import Dashboard from './components/dashboard/dashboard';
+// import Dashboard from './components/dashboard/dashboard';
 import HostSignup from './components/auths/hostSignup';
+
 import Welcome from './components/welcomePage/welcome';
 import VisitorMain from './components/visitorMain/visitorMain';
 // import Qrreader from './components/qrreader/qrreader';
@@ -30,7 +31,7 @@ function App() {
       <Route path="signup" element={<HostSignup />} />
       <Route path="loginSignup" element={<VisitorLogin />} />
       <Route path="host" element={<HostPage />} />
-      <Route path="dashboard/*" element={<Dashboard />} />
+      {/* <Route path="dashboard/*" element={<Dashboard />} /> */}
       <Route path="welcome/*" element={<Welcome />} />
       
     </Routes>
