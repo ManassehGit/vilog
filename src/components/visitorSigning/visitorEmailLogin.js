@@ -16,25 +16,25 @@ const VisitorEmailLogin = () => {
     <form>
     
     <div  className="m-4">
-    <div class="form-control m-2">
+    <div class="m-2">
       <input type="text" class="form-control form-control-lg col-md-6" id="name" placeholder="Name"/>
     </div>
     </div>
 
     <div  className="m-4">
-    <div class="form-control m-2">
+    <div class="m-2">
       <input type="text" class="form-control form-control-lg col-md-6" id="company" placeholder="Company"/>
     </div>
     </div>
 
     <div  className="m-4">
-    <div class="form-control m-2">
+    <div class="m-2">
       <input type="text" class="form-control form-control-lg col-md-6" id="phone" placeholder="Phone"/>
     </div>
     </div>
 
     <div  className="m-4">
-    <div class="form-control m-2">
+    <div class="m-2">
       <input type="email" class="form-control form-control-lg col-md-6" id="email" placeholder="Email"/>
     </div>
     </div>
