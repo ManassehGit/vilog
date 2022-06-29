@@ -5,11 +5,13 @@ const {Pool} = require('pg');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const cors = require('cors');
+require('dotenv').config()
+
 
 swaggerDocument = require('./swagger.json');
 
 
-const uri = "postgres://eatpxpnqscoxqx:0765d0686bedc1718fc1298cb6162a48fee9e458fe1a89598d4f8a2062f8ff33@ec2-54-165-90-230.compute-1.amazonaws.com:5432/ddbhdm3cc7l5kg";
+const uri = process.env.URI
 const app = express();
 
 //Configure cors
@@ -23,8 +25,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-
-
 let port = process.env.PORT || 8000;
 
 app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -33,8 +33,8 @@ app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const pool = new Pool({
  connectionString: uri,
  ssl: {
- rejectUnauthorized: false
- }
+    rejectUnauthorized: false
+    }
 });
 
 app.get("/", async (req, res) => {
