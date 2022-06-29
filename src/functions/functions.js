@@ -20,8 +20,8 @@ export const logVisitor = async (email, dateCurrent, timeIn, timeOut, loginMetho
 export const getUsers = async () => {
 
     try{
-        const result = await axios.get("/users");
-        return result.data;
+        const result = await axios.get("https://vilogserver.herokuapp.com/users");
+        return result.rows;
 
     }catch(err){
         console.log(err)
@@ -31,8 +31,8 @@ export const getUsers = async () => {
 export const getVisitors = async () => {
 
     try{
-        const result = await axios.get("/visitors");
-        return result.data;
+        const result = await axios.get("https://vilogserver.herokuapp.com/visitors");
+        return result.rows;
 
     }catch(err){
         console.log(err)
