@@ -119,7 +119,7 @@ app.delete('/users/:id', async (req, res, next) => {
     }
 })
 
-app.put('/users/:id', (req, res, next) => {
+app.put('/users/:id', async (req, res, next) => {
     console.log(JSON.stringify(req.body))
     const { id } = req.params;
 
