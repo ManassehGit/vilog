@@ -49,7 +49,7 @@ app.get("/", async (req, res) => {
 app.get("/sendMail/:usermail", async (req, res) => {
     const {usermail} = req.params;
     let result = await sendVisitorQR.sendQRMail(`${usermail}`)
-    res.status(201).send(result);
+    res.json(result.rows);
     console.log("result", result)
 })
 
@@ -59,7 +59,7 @@ app.get('/users', async (req, res, next) => {
     // res.status(201).json({msg: "Welcome to the serve page"});
     try{
         const result = await pool.query(`SELECT * FROM Users;`);
-        res.status(200).send(result);
+        res.json(result.rows);
     }catch(err){
         console.log(err)
     }
@@ -71,7 +71,7 @@ app.get('/users', async (req, res, next) => {
 app.get('/visitors', async (req, res, next) => {
     try{
         const result = await pool.query(`SELECT * FROM Visitors;`);
-        res.status(200).send(result);
+        res.json(result.rows);
     }catch(err){
         console.log(err);
     }
@@ -85,7 +85,7 @@ app.post('/addUser', async (req, res, next) => {
         const {firstname, password, department} = req.body;
         const result = await pool.query(`INSERT INTO Users(username, user_password, department) VALUES('${firstname}', '${password}', '${department}') RETURNING *;`)
         
-        return res.json(result);
+        res.json(result.rows);
     
     }catch(err){
         console.log("Sorry error",err.message);
@@ -98,7 +98,7 @@ app.post('/addVisitor', async (req, res, next) => {
         const {username, dateCurrent, timeIn, timeOut, loginMethod} = req.body;
         
         const result = await pool.query(`INSERT INTO Visitors(username, date_current, time_in, time_out, login_method) VALUES('${username}', '${dateCurrent}', '${timeIn}', '${timeOut}', '${loginMethod}') RETURNING *;`)
-        return res.json(result);
+        res.json(result.rows);
     
     }catch(err){
         console.log("Sorry error",err.message);
@@ -112,7 +112,7 @@ app.delete('/users/:id', async (req, res, next) => {
         
         const result = await pool.query(`DELETE FROM Users WHERE id='${id}' RETURNING *;`)
         console.log(result.rows)
-        return res.json(result.rows);
+        res.json(result.rows);
     
     }catch(err){
         console.log("Sorry error",err.message);
@@ -121,6 +121,24 @@ app.delete('/users/:id', async (req, res, next) => {
 
 app.put('/users/:id', (req, res, next) => {
     console.log(JSON.stringify(req.body))
+    const { id } = req.params;
+
+        let columns = [
+            "username", 
+            "user_password", 
+            "department"
+        ]
+
+        for (let i = 0; i < columns.length; i++) {
+
+            if (req.body.hasOwnProperty(columns[i])) {
+                let key = columns[i]
+                const value = req.body[key];
+                const update = await pool.query(`UPDATE users SET ${key} = $1 WHERE id = $2`,
+                    [value, id]);
+            }
+        }
+
 })
 
 app.listen(port, () => {
