@@ -4,7 +4,7 @@ import Home from './components/home/home';
 import HostLogin from './components/auths/hostLogin';
 import VisitorLogin from './components/auths/visitorLogin';
 import HostPage from './components/host/hostPage';
-import Dashboard from './components/dashboard/dashboard';
+import Dash from './components/dashboard/dash/dash';
 import HostSignup from './components/auths/hostSignup';
 
 import Welcome from './components/welcomePage/welcome';
@@ -31,7 +31,7 @@ function App() {
       <Route path="signup" element={<HostSignup />} />
       <Route path="loginSignup" element={<VisitorLogin />} />
       <Route path="host" element={<HostPage />} />
-      <Route path="dashboard/*" element={<Dashboard />} />
+      <Route path="dashboard/*" element={<Dash />} />
       <Route path="visitordashboard/*" element={<VisitorDashboard />} />
       <Route path="welcome/*" element={<Welcome />} />
       
