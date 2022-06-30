@@ -13,6 +13,7 @@ import VisitorQRLogin from './components/visitorSigning/visitorQRSigning';
 import VisitorEmailLogin from './components/visitorSigning/visitorEmailLogin';
 import VisitorGuest from './components/visitorSigning/visitorGuest';
 import VisitorLogout from './components/visitorLogout/visitorLogout';
+import VisitorDashboard from './components/visitorDashboard/visitorDashboard';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <Route path="loginSignup" element={<VisitorLogin />} />
       <Route path="host" element={<HostPage />} />
       <Route path="dashboard/*" element={<Dashboard />} />
+      <Route path="visitordashboard/*" element={<VisitorDashboard />} />
       <Route path="welcome/*" element={<Welcome />} />
       
     </Routes>
