@@ -11,7 +11,7 @@ require('dotenv').config()
 swaggerDocument = require('./swagger.json');
 
 
-const uri = process.env.URI
+const uri = process.env.DATABASE_URL
 const app = express();
 
 //Configure cors
