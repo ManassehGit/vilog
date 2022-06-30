@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # "proxy": "https://vilogserver.herokuapp.com/",
+
+# other
+.eslintcache
