@@ -49,7 +49,7 @@ app.get("/", async (req, res) => {
 app.get("/sendMail/:usermail", async (req, res) => {
     const {usermail} = req.params;
     let result = await sendVisitorQR.sendQRMail(`${usermail}`)
-    res.json(result.rows);
+    res.json(result);
     console.log("result", result)
 })
 
