@@ -1,13 +1,14 @@
-
 import React, {useEffect, useState} from 'react';
-import { useSelector } from 'react-redux';
-// import { getVisitors } from '../../functions/functions';
+// import { useSelector } from 'react-redux';
+// import { getusers } from '../../functions/functions';
 import axios from "axios";
+import BaseDashboard from '../baseDashboard/baseDashboard';
 import { Table } from 'react-bootstrap';
 
-const Dashboard = () => {
-  let visitors = useSelector(state => state.visitors.visitorEmails);
-  const [users, setUsers] = useState([]);  
+
+const EmployeeList = () => {
+    // let currentusers = useSelector(state => state.users.visitorEmails);
+    const [users, setUsers] = useState([]);  
 
 useEffect(() => {
   axios.get("http://vilogserver.herokuapp.com/users")
@@ -15,27 +16,18 @@ useEffect(() => {
           setUsers(response.data);
         })
 }, [])
-
-
-// console.log(users)
-// console.log("users chekc", typeof users)
-// for(let i in users){
-//   console.log(i)
-// }
+console.log(users)
 
   return (
     <div>
-      Work on dashboard
-      {visitors?.map((person,index) => <li key={index}>{person}</li>) }
-      
-          <div className='container'>
+        <BaseDashboard>
+        <div className='container'>
             <Table striped bordered hover>
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
                   <th>Username</th>
+                  <th>Department</th>
+                  <th>Admin Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,7 +35,6 @@ useEffect(() => {
                 return (
                 <tr>
                   <td>{data.username}</td>
-                  <td>{data.user_password}</td>
                   <td>{data.department}</td>
                   <td>{data?.is_admin || "Not an Admin"}</td>
                 </tr>
@@ -52,11 +43,12 @@ useEffect(() => {
               </tbody>
             </Table>
           </div>
-       
+        </BaseDashboard>
     </div>
   )
 }
 
-// {visitors?.map(person => <li>{person}</li>)}
+export default EmployeeList
 
-export default Dashboard
+// date.parse(now, , 'MMM DD YYYY')
+// {console.log(date.parse(data.date_current.slice(0,10)))}

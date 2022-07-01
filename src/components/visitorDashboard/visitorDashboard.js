@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 // import { useSelector } from 'react-redux';
 // import { getVisitors } from '../../functions/functions';
 import axios from "axios";
+import BaseDashboard from '../dashboard/baseDashboard/baseDashboard';
 import { Table } from 'react-bootstrap';
 
 
@@ -19,6 +20,7 @@ console.log(visitors)
 
   return (
     <div>
+        <BaseDashboard>
         <div className='container'>
             <Table striped bordered hover>
               <thead>
@@ -45,6 +47,7 @@ console.log(visitors)
               </tbody>
             </Table>
           </div>
+        </BaseDashboard>
     </div>
   )
 }

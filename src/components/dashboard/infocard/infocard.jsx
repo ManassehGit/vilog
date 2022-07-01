@@ -2,7 +2,7 @@ import React from 'react'
 
 const InfoCard = () => {
   return (
-    <div>
+    <>
         <div class="col-md-6 col-xl-3 mb-4">
                             <div class="card shadow border-left-primary py-2">
                                 <div class="card-body">
@@ -16,7 +16,7 @@ const InfoCard = () => {
                                 </div>
                             </div>
             </div>
-    </div>
+    </>
   )
 }
 

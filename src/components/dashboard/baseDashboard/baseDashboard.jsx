@@ -6,18 +6,12 @@ import DashContent from '../dashcontent/dashcontent'
 
 import TopNav from '../topnav/topnav'
 import DashContainer from '../dashcontainer/dashcontainer'
-import DashHeader from '../dashheader/dashheader'
 import PageTop from '../pagetop/pagetop'
-import InfoCard from '../infocard/infocard'
-import InfoRow from '../inforow/inforow'
 
-import LoginsGraph from '../loginsgraph/loginsgraph'
-import LoginsPie from '../loginspie/loginspie'
 import DashFooter from '../dashfooter/dashfooter'
 
 
-
-const Dash = () => {
+const BaseDashboard = (props) => {
   return (
     <div>
         <MainWrapper>
@@ -26,14 +20,7 @@ const Dash = () => {
                 <DashContent>
                     <TopNav />
                     <DashContainer>
-                        <DashHeader />
-                        <InfoRow>
-                            <InfoCard />
-                        </InfoRow>
-                        <InfoRow>
-                            <LoginsGraph />
-                            <LoginsPie />
-                        </InfoRow>
+                        {props.children}
                     </DashContainer>
                 </DashContent>
                 <DashFooter />
@@ -44,4 +31,4 @@ const Dash = () => {
   )
 }
 
-export default Dash
+export default BaseDashboard

@@ -14,6 +14,8 @@ import VisitorEmailLogin from './components/visitorSigning/visitorEmailLogin';
 import VisitorGuest from './components/visitorSigning/visitorGuest';
 import VisitorLogout from './components/visitorLogout/visitorLogout';
 import VisitorDashboard from './components/visitorDashboard/visitorDashboard';
+import EmployeeList from './components/dashboard/employeeList/employeeList';
+import DashProfile from './components/dashboard/dashprofile/dashprofile';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
       <Route path="host" element={<HostPage />} />
       <Route path="dashboard/*" element={<Dash />} />
       <Route path="visitordashboard/*" element={<VisitorDashboard />} />
+      <Route path="employeelist/*" element={<EmployeeList />} />
+      <Route path="dashprofile/*" element={<DashProfile />} />
       <Route path="welcome/*" element={<Welcome />} />
       
     </Routes>
