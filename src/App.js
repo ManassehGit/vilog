@@ -33,11 +33,12 @@ function App() {
       <Route path="signup" element={<HostSignup />} />
       <Route path="loginSignup" element={<VisitorLogin />} />
       <Route path="host" element={<HostPage />} />
-      <Route path="dashboard/*" element={<Dash />} />
-      <Route path="visitordashboard/*" element={<VisitorDashboard />} />
-      <Route path="employeelist/*" element={<EmployeeList />} />
-      <Route path="dashprofile/*" element={<DashProfile />} />
-      <Route path="welcome/*" element={<Welcome />} />
+      <Route path="dashboard" element={<Dash />} />
+      <Route path="visitordashboard" element={<VisitorDashboard />} />
+      <Route path="employeelist" element={<EmployeeList />} />
+      <Route path="dashprofile" element={<DashProfile />} />
+      <Route path="welcome" element={<Welcome />} />
+      
       
     </Routes>
   </Router>
