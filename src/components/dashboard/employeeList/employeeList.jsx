@@ -36,7 +36,7 @@ console.log(users)
                 <tr>
                   <td>{data.username}</td>
                   <td>{data.department}</td>
-                  <td>{data?.is_admin || "Not an Admin"}</td>
+                  <td>{data?.is_admin? "Admin Role" : "Employee"}</td>
                 </tr>
                  )
                 }) }
