@@ -17,7 +17,7 @@ const TopNav = () => {
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in"
                                         role="menu"><Link class="dropdown-item" role="presentation" to="/dashprofile"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</Link>
                                         <Link class="dropdown-item" role="presentation" to="/"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Homepage</Link>
-                                        <div class="dropdown-divider"></div><Link class="dropdown-item" role="presentation" to="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</Link></div>
+                                        <div class="dropdown-divider"></div><Link class="dropdown-item" role="presentation" to="/login"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</Link></div>
                                 </div>
                             </li>
                         </ul>
