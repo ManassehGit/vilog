@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "4.6.0",
+    "cdbreact": "^1.5.2",
     "chartist": "^0.11.4",
     "concurrently": "^7.2.1",
     "crypto-browserify": "^3.12.0",
