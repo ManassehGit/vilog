@@ -2,7 +2,7 @@ import React from 'react'
 
 const PageTop = () => {
   return (
-    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <a className="border rounded d-inline scroll-to-top" href="#page-top"><i className="fas fa-angle-up"></i></a>
   )
 }
 

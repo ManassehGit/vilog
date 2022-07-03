@@ -16,6 +16,7 @@ import VisitorLogout from './components/visitorLogout/visitorLogout';
 import VisitorDashboard from './components/visitorDashboard/visitorDashboard';
 import EmployeeList from './components/dashboard/employeeList/employeeList';
 import DashProfile from './components/dashboard/dashprofile/dashprofile';
+import PieChart from './components/dashboard/loginspie/pieChart';
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
       <Route path="employeelist" element={<EmployeeList />} />
       <Route path="dashprofile" element={<DashProfile />} />
       <Route path="welcome" element={<Welcome />} />
+      <Route path="pie" element={<PieChart />} />
+
       
       
     </Routes>
